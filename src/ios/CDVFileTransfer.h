@@ -39,7 +39,7 @@ typedef int CDVFileTransferDirection;
 // Magic value within the options dict used to set a cookie.
 extern NSString* const kOptionsKeyCookie;
 
-@interface CDVFileTransfer : CDVPlugin {}
+@interface CDVFileTransfer : CDVPlugin<NSURLSessionDelegate> {}
 
 - (void)upload:(CDVInvokedUrlCommand*)command;
 - (void)download:(CDVInvokedUrlCommand*)command;
@@ -60,29 +60,29 @@ extern NSString* const kOptionsKeyCookie;
 
 @class CDVFileTransferEntityLengthRequest;
 
-@interface CDVFileTransferDelegate : NSObject {}
-
-- (void)updateBytesExpected:(long long)newBytesExpected;
-- (void)cancelTransfer:(NSURLConnection*)connection;
-
-@property (strong) NSMutableData* responseData; // atomic
-@property (nonatomic, strong) NSDictionary* responseHeaders;
-@property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundTaskID;
-@property (nonatomic, strong) CDVFileTransfer* command;
-@property (nonatomic, assign) CDVFileTransferDirection direction;
-@property (nonatomic, strong) NSURLConnection* connection;
-@property (nonatomic, copy) NSString* callbackId;
-@property (nonatomic, copy) NSString* objectId;
-@property (nonatomic, copy) NSString* source;
-@property (nonatomic, copy) NSString* target;
-@property (nonatomic, copy) NSURL* targetURL;
-@property (nonatomic, copy) NSString* mimeType;
-@property (assign) int responseCode; // atomic
-@property (nonatomic, assign) long long bytesTransfered;
-@property (nonatomic, assign) long long bytesExpected;
-@property (nonatomic, assign) BOOL trustAllHosts;
-@property (strong) NSFileHandle* targetFileHandle;
-@property (nonatomic, strong) CDVFileTransferEntityLengthRequest* entityLengthRequest;
-@property (nonatomic, strong) CDVFile *filePlugin;
-
-@end
+//@interface CDVFileTransferDelegate : NSObject {}
+//
+//- (void)updateBytesExpected:(long long)newBytesExpected;
+//- (void)cancelTransfer:(NSURLConnection*)connection;
+//
+//@property (strong) NSMutableData* responseData; // atomic
+//@property (nonatomic, strong) NSDictionary* responseHeaders;
+//@property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundTaskID;
+//@property (nonatomic, strong) CDVFileTransfer* command;
+//@property (nonatomic, assign) CDVFileTransferDirection direction;
+//@property (nonatomic, strong) NSURLConnection* connection;
+//@property (nonatomic, copy) NSString* callbackId;
+//@property (nonatomic, copy) NSString* objectId;
+//@property (nonatomic, copy) NSString* source;
+//@property (nonatomic, copy) NSString* target;
+//@property (nonatomic, copy) NSURL* targetURL;
+//@property (nonatomic, copy) NSString* mimeType;
+//@property (assign) int responseCode; // atomic
+//@property (nonatomic, assign) long long bytesTransfered;
+//@property (nonatomic, assign) long long bytesExpected;
+//@property (nonatomic, assign) BOOL trustAllHosts;
+//@property (strong) NSFileHandle* targetFileHandle;
+//@property (nonatomic, strong) CDVFileTransferEntityLengthRequest* entityLengthRequest;
+//@property (nonatomic, strong) CDVFile *filePlugin;
+//
+//@end
